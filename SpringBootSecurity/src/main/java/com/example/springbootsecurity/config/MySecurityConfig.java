@@ -34,7 +34,19 @@ public class MySecurityConfig {
                 .password("password")
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(user);
+        UserDetails user2 = User.withDefaultPasswordEncoder()
+                .username("Rahman")
+                .password("Rahman")
+                .roles("USER")
+                .build();
+
+        UserDetails user3 = User.withDefaultPasswordEncoder()
+                .username("Tannu")
+                .password("Tannu")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user,user2,user3);
     }
 
 }
