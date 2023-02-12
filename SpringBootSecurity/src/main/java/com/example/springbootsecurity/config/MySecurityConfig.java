@@ -44,7 +44,7 @@ public class MySecurityConfig {
         UserDetails user3 = User
                 .withUsername("Tannu")
                 .password(this.passwordEncoder().encode("Tannu"))
-                .roles("USER")
+                .roles("ADMIN")
                 .build();
 
         return new InMemoryUserDetailsManager(user,user2,user3);
@@ -57,7 +57,7 @@ public class MySecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/home");
+        return (web) -> web.ignoring().requestMatchers("/public/**");
     }
 
 }
